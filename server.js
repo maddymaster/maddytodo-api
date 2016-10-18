@@ -4,7 +4,7 @@ var _ = require('underscore');
 var db = require('./db.js');
 
 var app = express();
-var PORT = process.env.PORT || 3005;
+var PORT = process.env.PORT || 3006;
 var todos = [];
 var todoNextId = 1;
 
@@ -128,7 +128,7 @@ app.post('/users', function (req, res){
 
 });
 
-db.sequelize.sync().then(function() {
+db.sequelize.sync({force: true}).then(function() {
 	app.listen(PORT, function() {
 		console.log('Express listening on port ' + PORT + '!');
 	});
